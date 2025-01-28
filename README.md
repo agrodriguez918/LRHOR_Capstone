@@ -1,6 +1,8 @@
 # LRHOR_Capstone
 Florida Polytechnic's LRH OR Capstone Team Project
 
+-add project description and introduction-
+
 # Branch Schema : 
 Main - DB information/guide, DB code (python), and testing DB  <br>
 *includes code to transfer data from Cerner to MSSQL Server
