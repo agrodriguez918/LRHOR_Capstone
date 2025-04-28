@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LRH Dashboard WDC</title>
+  <script src="https://connectors.tableau.com/libs/tableauwdc-2.3.0.js"></script>
+</head>
+<body>
+  <h2>Connect to LRH Live OR Dashboard</h2>
+  <p>This connector pulls JSON data served by the Flask server.</p>
+  <button onclick="fetchData()">Load Data</button>
+
+  <script>
+    (function () {
+      var myConnector = tableau.makeConnector();
+
+      myConnector.getSchema = function (schemaCallback) {
+        var cols = [
+          { id: "ID", dataType: tableau.dataTypeEnum.int },
+          { id: "rm_ID", dataType: tableau.dataTypeEnum.int },
+          { id: "staff_cnt", dataType: tableau.dataTypeEnum.int },
+          { id: "patient_frst", dataType: tableau.dataTypeEnum.string },
+          { id: "patient_lst", dataType: tableau.dataTypeEnum.string },
+          { id: "patient_ID", dataType: tableau.dataTypeEnum.int },
+          { id: "turnaround_status", dataType: tableau.dataTypeEnum.string },
+          { id: "turnaround_strt", dataType: tableau.dataTypeEnum.string },
+          { id: "turnaround_end", dataType: tableau.dataTypeEnum.string },
+          { id: "date", dataType: tableau.dataTypeEnum.string },
+		  { id: "X", alias: "X Coordinate", dataType: tableau.dataTypeEnum.string },
+          { id: "Y", alias: "Y Coordinate", dataType: tableau.dataTypeEnum.string },
+		  { id: "last_status_changed", alias: "Last Updated", dataType: tableau.dataTypeEnum.string }
+        ];
+
+        var tableSchema = {
+          id: "LRHDashboard",
+          alias: "Live OR Dashboard from Flask",
+          columns: cols
+        };
+
+        schemaCallback([tableSchema]);
+      };
+
+      myConnector.getData = function (table, doneCallback) {
+        fetch("http://10.221.81.23:5000/metrics")
+          .then(res => {
+            if (!res.ok) throw new Error("Fetch failed: " + res.statusText);
+            return res.json();
+          })
+          .then(data => {
+            table.appendRows(data);
+            doneCallback();
+          })
+          .catch(err => {
+            console.error("Fetch error:", err);
+            tableau.abortWithError("Could not fetch data from Flask server.");
+          });
+      };
+
+      tableau.registerConnector(myConnector);
+    })();
+
+    function fetchData() {
+      tableau.connectionName = "LRH OR Dashboard Live";
+      tableau.submit();
+    }
+  </script>
+</body>
+</html>
