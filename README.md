@@ -14,7 +14,7 @@ Dashboard - dashboard information/guide, stores finalized iteration of Tableau w
 
 # How to Run the Sever (local):
 <br>
-I reccommend having a static ip for the database and you can host on a secure port to provide more security. <br>
+I recommend having a static ip for the database and you can host on a secure port to provide more security. <br>
 Also FLASK is setup in the code, switch to FHIR of course would provide more security options and follow hospital data standards. <br>
 <br>
 Step 1: Download files. <br>
