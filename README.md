@@ -13,12 +13,12 @@ Dashboard - dashboard information/guide, stores finalized iteration of Tableau w
 *includes test dummy database 
 
 # How to Run the Sever (local):
-I reccommend having a static ip for the database and you can host on a secure port to provide more security.
-Also FLASK is setup in the code, switch to FHIR of course would provide more security options and follow hospital data standards.
-
-Step 1: Download files.
-Step 2: Open the index.html and change the Ip address (line 43)  "fetch("http://<IP-OF-HOST>:5000/metrics")" change the Ip to the Ip of the system that will run the sever (Hint when you run system_monitor.py it shows the Ip its running on). 
-Step 3: Now open up two CMD (Command Propmts) In the first one run the command "python system_monitor.py" this will start the WDC (Web data collecter needed for Tableau).
-Step 4: In the other CMD use the command "python3 -m http.server 8000" this will allow us to connect through the internet. WARANING this will run it on port 80 which is open, using other ports or hospital only ports can make this secure. (Still recommend switching to FHIR).'
-Step 5: In Tableau Go to: Data -> New Data Source -> To a Server -> Web Data Connector. Then add in the url to connect to the WDC "http://<IP-OF-HOST>:8000/index.html"
-Step 6: Once its all connected it should populate the tables.Also I recommend refreshing the data on the dashboard as we had crashes when doing it in the table view. 
+I reccommend having a static ip for the database and you can host on a secure port to provide more security. <br>
+Also FLASK is setup in the code, switch to FHIR of course would provide more security options and follow hospital data standards. <br>
+<br>
+Step 1: Download files. <br>
+Step 2: Open the index.html and change the Ip address (line 43)  "fetch("http://<IP-OF-HOST>:5000/metrics")" change the Ip to the Ip of the system that will run the sever (Hint when you run system_monitor.py it shows the Ip its running on). <br>
+Step 3: Now open up two CMD (Command Propmts) In the first one run the command "python system_monitor.py" this will start the WDC (Web data collecter needed for Tableau). <br>
+Step 4: In the other CMD use the command "python3 -m http.server 8000" this will allow us to connect through the internet. WARANING this will run it on port 80 which is open, using other ports or hospital only ports can make this secure. (Still recommend switching to FHIR). <br>
+Step 5: In Tableau Go to: Data -> New Data Source -> To a Server -> Web Data Connector. Then add in the url to connect to the WDC "http://<IP-OF-HOST>:8000/index.html" <br>
+Step 6: Once its all connected it should populate the tables.Also I recommend refreshing the data on the dashboard as we had crashes when doing it in the table view. <br>
