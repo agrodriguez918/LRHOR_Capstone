@@ -27,5 +27,5 @@ Step 4: In the other CMD use the command "python3 -m http.server 8000" this will
 <br>
 Step 5: In Tableau Go to: Data -> New Data Source -> To a Server -> Web Data Connector. Then add in the url to connect to the WDC "http://<IP-OF-HOST>:8000/index.html" <br>
 <br>
-Step 6: Once its all connected it should populate the tables.Also I recommend refreshing the data on the dashboard as we had crashes when doing it in the table view. <br>
+Step 6: Once its all connected it should populate the tables. Also I recommend refreshing the data on the dashboard as we had crashes when doing it in the table view. <br>
 <br>
